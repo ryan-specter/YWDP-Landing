@@ -31,8 +31,6 @@
         }
         
         .hero {
-            min-height: 932px;
-            max-height: 90vh;
             height: auto;
             display: flex;
             flex-direction: column;
@@ -44,7 +42,7 @@
             background-repeat: no-repeat;
             color: #ffffff;
             text-align: center;
-            padding: 60px 20px 172px;
+            padding: 60px 20px 0;
             position: relative;
             overflow: visible;
             box-sizing: border-box;
@@ -53,9 +51,7 @@
         /* Large screens - optimize spacing */
         @media (min-width: 769px) {
             .hero {
-                min-height: 932px;
-                max-height: 85vh;
-                padding: 60px 20px 172px;
+                padding: 60px 20px 0;
             }
             
             .hero h1 {
@@ -65,22 +61,21 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 80px;
+                margin-bottom: 60px;
                 margin-top: 0;
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 40px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
         }
         
         /* Extra large screens - more spacing */
         @media (min-width: 1400px) {
             .hero {
-                min-height: 982px;
-                max-height: 85vh;
-                padding: 70px 20px 182px;
+                padding: 70px 20px 0;
             }
             
             .hero h1 {
@@ -89,21 +84,20 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 80px;
+                margin-bottom: 60px;
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 40px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
         }
         
         /* Tall/narrow windows - adjust for portrait orientation */
         @media (max-height: 800px) and (min-width: 769px) {
             .hero {
-                min-height: 782px;
-                max-height: 90vh;
-                padding: 50px 20px 152px;
+                padding: 50px 20px 0;
             }
             
             .hero h1 {
@@ -115,14 +109,15 @@
             
             .hero .subtitle {
                 font-size: clamp(1rem, 2vw, 1.5rem);
-                margin-bottom: 60px;
+                margin-bottom: 50px;
                 margin-top: 0;
             }
             
             .device-showcase {
                 height: 280px;
                 transform: translateX(0);
-                margin-top: 20px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
             
             .device:nth-child(1) {
@@ -141,9 +136,7 @@
         /* Wide/short windows - landscape optimization */
         @media (min-width: 1200px) and (max-height: 700px) {
             .hero {
-                min-height: 832px;
-                max-height: 90vh;
-                padding: 50px 20px 152px;
+                padding: 50px 20px 0;
             }
             
             .hero h1 {
@@ -153,12 +146,13 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 60px;
+                margin-bottom: 50px;
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 30px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
         }
         
@@ -288,7 +282,8 @@
             align-items: center;
             perspective: 2000px;
             perspective-origin: center center;
-            margin: 40px auto 60px;
+            margin: 0 auto;
+            padding: 60px 0 0;
             position: relative;
             left: 0;
             transform: translateX(0);
@@ -301,14 +296,15 @@
             overflow: visible;
         }
         
-        /* On mobile, center in viewport but below logo/heading */
+        /* On mobile, position below subtitle */
         @media (max-width: 768px) {
             .device-showcase {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: translateX(0);
+                margin: 0 auto;
+                padding: 40px 0 0;
             }
         }
         
@@ -489,9 +485,10 @@
         }
         
         .section:first-of-type {
-            padding-top: 100px;
+            padding-top: 40px;
             position: relative;
             z-index: 2;
+            margin-top: 0;
         }
         
         .section-white {
@@ -922,7 +919,7 @@
             }
             
             .section:first-of-type {
-                padding-top: 120px;
+                padding-top: 40px;
             }
         }
         
@@ -961,15 +958,23 @@
             .device-showcase {
                 height: clamp(300px, 50vh, 400px);
                 perspective: 1500px;
-                margin: 30px auto 50px;
+                margin: 30px auto 80px;
             }
         }
         
         /* Mobile devices - center in viewport */
         @media (max-width: 768px) {
             .hero {
-                height: 100vh;
-                position: relative;
+                padding: 40px 15px 0;
+            }
+            
+            .hero h1 {
+                padding-top: 40px;
+                margin-bottom: 20px;
+            }
+            
+            .hero .subtitle {
+                margin-bottom: 40px;
             }
             
             .phone-huawei,
@@ -980,20 +985,27 @@
             }
             
             .device-showcase {
-                height: clamp(300px, 50vh, 400px);
+                height: clamp(250px, 40vh, 350px);
                 perspective: 1500px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+                position: relative;
+                margin: 0 auto;
+                padding: 40px 0 0;
+                transform: translateX(0);
             }
         }
         
         @media (max-width: 600px) {
             .hero {
-                height: 100vh;
-                position: relative;
+                padding: 40px 15px 0;
+            }
+            
+            .hero h1 {
+                padding-top: 40px;
+                margin-bottom: 20px;
+            }
+            
+            .hero .subtitle {
+                margin-bottom: 40px;
             }
             
             .phone-huawei,
@@ -1004,13 +1016,12 @@
             }
             
             .device-showcase {
-                height: clamp(260px, 42vh, 330px);
+                height: clamp(220px, 35vh, 300px);
                 perspective: 1200px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+                position: relative;
+                margin: 0 auto;
+                padding: 40px 0 0;
+                transform: translateX(0);
             }
             
             .device:nth-child(1) {
@@ -1024,17 +1035,13 @@
         
         @media (max-width: 480px) {
             .hero {
-                padding: 40px 15px 60px;
-                min-height: 600px;
-                max-height: none;
-                height: 100vh;
-                position: relative;
+                padding: 40px 15px 0;
             }
             
             .hero h1 {
                 padding-top: 40px;
                 margin-top: 0;
-                margin-bottom: 25px;
+                margin-bottom: 20px;
             }
             
             .hero h1 img {
@@ -1056,13 +1063,12 @@
             }
             
             .device-showcase {
-                height: clamp(220px, 35vh, 280px);
+                height: clamp(200px, 32vh, 260px);
                 perspective: 1000px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+                position: relative;
+                margin: 0 auto;
+                padding: 40px 0 0;
+                transform: translateX(0);
             }
             
             .device:nth-child(1) {
@@ -1074,11 +1080,11 @@
             }
             
             .section:first-of-type {
-                padding-top: 60px;
+                padding-top: 40px;
             }
             
             .section {
-                padding: 60px 15px 25px;
+                padding: 50px 15px 25px;
             }
             
             .section h2 {
@@ -1098,17 +1104,13 @@
         
         @media (max-width: 360px) {
             .hero {
-                min-height: 550px;
-                max-height: none;
-                height: 100vh;
-                padding: 30px 15px 50px;
-                position: relative;
+                padding: 30px 15px 0;
             }
             
             .hero h1 {
                 padding-top: 30px;
                 margin-top: 0;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             
             .hero h1 img {
@@ -1116,7 +1118,7 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 40px;
+                margin-bottom: 35px;
                 margin-top: 0;
                 font-size: clamp(0.85rem, 4vw, 1.1rem);
             }
@@ -1129,13 +1131,12 @@
             }
             
             .device-showcase {
-                height: clamp(200px, 30vh, 250px);
+                height: clamp(180px, 28vh, 230px);
                 perspective: 900px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+                position: relative;
+                margin: 0 auto;
+                padding: 35px 0 0;
+                transform: translateX(0);
             }
             
             .device:nth-child(1) {
@@ -1147,27 +1148,24 @@
             }
             
             .section:first-of-type {
-                padding-top: 50px;
+                padding-top: 40px;
             }
             
             .section {
-                padding: 50px 15px 20px;
+                padding: 40px 15px 20px;
             }
         }
         
         /* Mobile landscape orientation - keep all 3 devices, scale down */
         @media (max-width: 768px) and (orientation: landscape) {
             .hero {
-                min-height: 500px;
-                max-height: 90vh;
-                height: auto;
-                padding: 40px 20px 60px;
+                padding: 40px 20px 0;
             }
             
             .hero h1 {
                 padding-top: 40px;
                 margin-top: 0;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             
             .hero h1 img {
@@ -1188,17 +1186,18 @@
             }
             
             .device-showcase {
-                height: clamp(200px, 30vh, 280px);
-                margin: 20px auto 30px;
+                height: clamp(180px, 28vh, 250px);
+                position: relative;
+                margin: 0 auto;
+                padding: 30px 0 0;
+                transform: translateX(0);
             }
         }
         
         /* Square/almost square viewports */
         @media (min-width: 600px) and (max-width: 900px) and (min-height: 600px) and (max-height: 900px) {
             .hero {
-                min-height: 800px;
-                max-height: 90vh;
-                padding: 50px 20px 150px;
+                padding: 50px 20px 0;
             }
             
             .hero h1 {
