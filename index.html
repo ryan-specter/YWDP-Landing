@@ -32,6 +32,7 @@
         
         .hero {
             height: auto;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,6 +49,12 @@
             box-sizing: border-box;
         }
         
+        /* Ensure hero content stays above mockups */
+        .hero > *:not(.device-showcase) {
+            position: relative;
+            z-index: 10;
+        }
+        
         /* Large screens - optimize spacing */
         @media (min-width: 769px) {
             .hero {
@@ -61,14 +68,19 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 60px;
+                margin-bottom: clamp(40px, 5vw, 70px);
                 margin-top: 0;
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 0;
+                margin: 0 auto;
                 margin-bottom: 0;
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(180px, 24vw, 250px);
+                margin-top: clamp(-180px, -24vw, -250px);
             }
         }
         
@@ -84,13 +96,18 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 60px;
+                margin-bottom: clamp(50px, 6vw, 80px);
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 0;
+                margin: 0 auto;
                 margin-bottom: 0;
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(180px, 24vw, 250px);
+                margin-top: clamp(-180px, -24vw, -250px);
             }
         }
         
@@ -109,15 +126,20 @@
             
             .hero .subtitle {
                 font-size: clamp(1rem, 2vw, 1.5rem);
-                margin-bottom: 50px;
+                margin-bottom: clamp(35px, 4vw, 60px);
                 margin-top: 0;
             }
             
             .device-showcase {
                 height: 280px;
                 transform: translateX(0);
-                margin-top: 0;
+                margin: 0 auto;
                 margin-bottom: 0;
+            }
+            
+            .section:first-of-type {
+                padding-top: 180px;
+                margin-top: -180px;
             }
             
             .device:nth-child(1) {
@@ -146,13 +168,18 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 50px;
+                margin-bottom: clamp(35px, 4vw, 60px);
             }
             
             .device-showcase {
                 transform: translateX(0);
-                margin-top: 0;
+                margin: 0 auto;
                 margin-bottom: 0;
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(180px, 24vw, 250px);
+                margin-top: clamp(-180px, -24vw, -250px);
             }
         }
         
@@ -171,7 +198,7 @@
             margin-top: 0;
             padding-top: 60px;
             position: relative;
-            z-index: 2;
+            z-index: 10;
             flex-shrink: 0;
         }
         
@@ -179,7 +206,7 @@
             font-family: 'AntiPiracy', Impact, 'Arial Black', sans-serif;
             font-size: clamp(3rem, 8vw, 7rem);
             font-weight: 900;
-            letter-spacing: -0.03em;
+            letter-spacing: 0.05em;
             background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -195,6 +222,8 @@
             height: auto;
             display: block;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
         
         /* Show text fallback when image fails to load */
@@ -207,10 +236,10 @@
             font-size: clamp(1.2rem, 2.5vw, 2rem);
             font-weight: 300;
             color: #ffffff;
-            margin-bottom: 60px;
+            margin-bottom: clamp(30px, 4vw, 60px);
             margin-top: 0;
             position: relative;
-            z-index: 2;
+            z-index: 10;
             flex-shrink: 0;
             width: 100%;
             padding: 0 20px;
@@ -280,32 +309,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 2000px;
+            perspective: clamp(1200px, 120vw, 2000px);
             perspective-origin: center center;
             margin: 0 auto;
-            padding: 60px 0 0;
+            margin-bottom: 0;
+            padding: 0;
             position: relative;
             left: 0;
+            right: 0;
             transform: translateX(0);
-            z-index: 1;
-            height: 350px;
+            z-index: 5;
+            height: clamp(280px, 38vw, 400px);
+            min-height: clamp(280px, 38vw, 400px);
             flex-shrink: 0;
             width: 100%;
             max-width: 100%;
             pointer-events: none;
             overflow: visible;
-        }
-        
-        /* On mobile, position below subtitle */
-        @media (max-width: 768px) {
-            .device-showcase {
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: translateX(0);
-                margin: 0 auto;
-                padding: 40px 0 0;
-            }
         }
         
         .device {
@@ -319,36 +339,36 @@
         }
         
         .device:nth-child(1) {
-            transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(10px, 2.5vw, 30px)))) rotateY(25deg) translateZ(-30px);
+            transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(12px, 2.2vw, 28px)))) rotateY(25deg) translateZ(clamp(-20px, -1.5vw, -30px));
             z-index: 1;
             animation: floatLeft 4s ease-in-out infinite;
         }
         
         .device:nth-child(2) {
-            transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(60px);
+            transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(clamp(40px, 3vw, 60px));
             z-index: 3;
             animation: floatCenter 4s ease-in-out infinite 0.3s;
         }
         
         .device:nth-child(3) {
-            transform: translate(-50%, -50%) translateX(calc(100% + clamp(10px, 2.5vw, 30px))) rotateY(-25deg) translateZ(-30px);
+            transform: translate(-50%, -50%) translateX(calc(100% + clamp(12px, 2.2vw, 28px))) rotateY(-25deg) translateZ(clamp(-20px, -1.5vw, -30px));
             z-index: 1;
             animation: floatRight 4s ease-in-out infinite 0.6s;
         }
         
         @keyframes floatLeft {
-            0%, 100% { transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(10px, 2.5vw, 30px)))) rotateY(25deg) translateZ(-30px) translateY(0px); }
-            50% { transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(10px, 2.5vw, 30px)))) rotateY(25deg) translateZ(-30px) translateY(-12px); }
+            0%, 100% { transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(12px, 2.2vw, 28px)))) rotateY(25deg) translateZ(clamp(-20px, -1.5vw, -30px)) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(12px, 2.2vw, 28px)))) rotateY(25deg) translateZ(clamp(-20px, -1.5vw, -30px)) translateY(clamp(-8px, -0.8vw, -12px)); }
         }
         
         @keyframes floatCenter {
-            0%, 100% { transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(60px) translateY(0px); }
-            50% { transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(60px) translateY(-15px); }
+            0%, 100% { transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(clamp(40px, 3vw, 60px)) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(clamp(40px, 3vw, 60px)) translateY(clamp(-10px, -1vw, -15px)); }
         }
         
         @keyframes floatRight {
-            0%, 100% { transform: translate(-50%, -50%) translateX(calc(100% + clamp(10px, 2.5vw, 30px))) rotateY(-25deg) translateZ(-30px) translateY(0px); }
-            50% { transform: translate(-50%, -50%) translateX(calc(100% + clamp(10px, 2.5vw, 30px))) rotateY(-25deg) translateZ(-30px) translateY(-12px); }
+            0%, 100% { transform: translate(-50%, -50%) translateX(calc(100% + clamp(12px, 2.2vw, 28px))) rotateY(-25deg) translateZ(clamp(-20px, -1.5vw, -30px)) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateX(calc(100% + clamp(12px, 2.2vw, 28px))) rotateY(-25deg) translateZ(clamp(-20px, -1.5vw, -30px)) translateY(clamp(-8px, -0.8vw, -12px)); }
         }
         
         .device-frame {
@@ -470,8 +490,8 @@
         .phone-huawei,
         .phone-samsung,
         .phone-main {
-            width: clamp(100px, 20vw, 250px);
-            height: clamp(167px, 33.33vw, 417px); /* Maintains 480:800 aspect ratio */
+            width: clamp(140px, 22vw, 220px);
+            height: clamp(233px, 36.67vw, 367px); /* Maintains 480:800 aspect ratio */
         }
         
         .device-screen {
@@ -485,10 +505,10 @@
         }
         
         .section:first-of-type {
-            padding-top: 40px;
+            padding-top: clamp(180px, 24vw, 250px);
             position: relative;
             z-index: 2;
-            margin-top: 0;
+            margin-top: clamp(-180px, -24vw, -250px);
         }
         
         .section-white {
@@ -506,7 +526,7 @@
             font-weight: 900;
             text-align: center;
             margin-bottom: 30px;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
         
@@ -534,13 +554,27 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            gap: 20px;
+            margin: 40px 0;
         }
         
         .feature {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
-            padding: 25px 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section-white .feature {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
         
         .feature-icon {
@@ -549,10 +583,11 @@
         }
         
         .feature h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 12px;
             color: #1d1d1f;
+            letter-spacing: 0.02em;
         }
         
         .section-black .feature h3 {
@@ -911,54 +946,8 @@
                 transform: translateX(220px) rotateY(-25deg) translateZ(-20px) scale(0.7);
             }
             
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: 220px;
-                height: 367px;
-            }
-            
             .section:first-of-type {
                 padding-top: 40px;
-            }
-        }
-        
-        /* Medium tablets - optimize spacing */
-        @media (max-width: 1024px) and (min-height: 900px) {
-            .hero {
-                min-height: 900px;
-                max-height: 85vh;
-                padding: 60px 20px 172px;
-            }
-            
-            .hero h1 {
-                padding-top: 60px;
-                margin-bottom: 30px;
-            }
-            
-            .hero .subtitle {
-                margin-bottom: 40px;
-            }
-            
-            .device-showcase {
-                transform: translateX(-50%) translateY(-150px);
-            }
-        }
-        
-        
-        /* Responsive adjustments - keep all 3 devices visible on all screen sizes */
-        @media (max-width: 900px) and (min-width: 769px) {
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(100px, 18vw, 200px);
-                height: clamp(167px, 30vw, 333px);
-            }
-            
-            .device-showcase {
-                height: clamp(300px, 50vh, 400px);
-                perspective: 1500px;
-                margin: 30px auto 80px;
             }
         }
         
@@ -974,23 +963,22 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 40px;
-            }
-            
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(100px, 18vw, 200px);
-                height: clamp(167px, 30vw, 333px);
+                margin-bottom: clamp(30px, 4vw, 50px);
             }
             
             .device-showcase {
-                height: clamp(250px, 40vh, 350px);
-                perspective: 1500px;
                 position: relative;
                 margin: 0 auto;
-                padding: 40px 0 0;
+                margin-bottom: 0;
+                padding: 0;
                 transform: translateX(0);
+                height: clamp(280px, 40vw, 380px);
+                min-height: clamp(280px, 40vw, 380px);
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(180px, 26vw, 230px);
+                margin-top: clamp(-180px, -26vw, -230px);
             }
         }
         
@@ -1005,31 +993,22 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 40px;
-            }
-            
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(85px, 14vw, 170px);
-                height: clamp(142px, 23.33vw, 283px);
+                margin-bottom: clamp(30px, 4vw, 50px);
             }
             
             .device-showcase {
-                height: clamp(220px, 35vh, 300px);
-                perspective: 1200px;
                 position: relative;
                 margin: 0 auto;
-                padding: 40px 0 0;
+                margin-bottom: 0;
+                padding: 0;
                 transform: translateX(0);
+                height: clamp(280px, 42vw, 360px);
+                min-height: clamp(280px, 42vw, 360px);
             }
             
-            .device:nth-child(1) {
-                transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(4px, 1vw, 12px)))) rotateY(12deg) translateZ(-12px);
-            }
-            
-            .device:nth-child(3) {
-                transform: translate(-50%, -50%) translateX(calc(100% + clamp(4px, 1vw, 12px))) rotateY(-12deg) translateZ(-12px);
+            .section:first-of-type {
+                padding-top: clamp(180px, 28vw, 210px);
+                margin-top: clamp(-180px, -28vw, -210px);
             }
         }
         
@@ -1050,37 +1029,24 @@
             
             .hero .subtitle {
                 font-size: clamp(0.9rem, 4vw, 1.2rem);
-                margin-bottom: 40px;
+                margin-bottom: clamp(30px, 4vw, 50px);
                 margin-top: 0;
                 padding: 0 10px;
             }
             
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(70px, 12vw, 140px);
-                height: clamp(117px, 20vw, 233px);
-            }
-            
             .device-showcase {
-                height: clamp(200px, 32vh, 260px);
-                perspective: 1000px;
                 position: relative;
                 margin: 0 auto;
-                padding: 40px 0 0;
+                margin-bottom: 0;
+                padding: 0;
                 transform: translateX(0);
-            }
-            
-            .device:nth-child(1) {
-                transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(3px, 0.8vw, 10px)))) rotateY(8deg) translateZ(-8px);
-            }
-            
-            .device:nth-child(3) {
-                transform: translate(-50%, -50%) translateX(calc(100% + clamp(3px, 0.8vw, 10px))) rotateY(-8deg) translateZ(-8px);
+                height: clamp(280px, 45vw, 360px);
+                min-height: clamp(280px, 45vw, 360px);
             }
             
             .section:first-of-type {
-                padding-top: 40px;
+                padding-top: clamp(180px, 31vw, 210px);
+                margin-top: clamp(-180px, -31vw, -210px);
             }
             
             .section {
@@ -1118,37 +1084,24 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 35px;
+                margin-bottom: clamp(25px, 3.5vw, 45px);
                 margin-top: 0;
                 font-size: clamp(0.85rem, 4vw, 1.1rem);
             }
             
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(60px, 10vw, 120px);
-                height: clamp(100px, 16.67vw, 200px);
-            }
-            
             .device-showcase {
-                height: clamp(180px, 28vh, 230px);
-                perspective: 900px;
                 position: relative;
                 margin: 0 auto;
-                padding: 35px 0 0;
+                margin-bottom: 0;
+                padding: 0;
                 transform: translateX(0);
-            }
-            
-            .device:nth-child(1) {
-                transform: translate(-50%, -50%) translateX(calc(-1 * (100% + clamp(2px, 0.6vw, 8px)))) rotateY(5deg) translateZ(-5px);
-            }
-            
-            .device:nth-child(3) {
-                transform: translate(-50%, -50%) translateX(calc(100% + clamp(2px, 0.6vw, 8px))) rotateY(-5deg) translateZ(-5px);
+                height: clamp(280px, 48vw, 340px);
+                min-height: clamp(280px, 48vw, 340px);
             }
             
             .section:first-of-type {
-                padding-top: 40px;
+                padding-top: clamp(180px, 34vw, 190px);
+                margin-top: clamp(-180px, -34vw, -190px);
             }
             
             .section {
@@ -1174,23 +1127,23 @@
             
             .hero .subtitle {
                 font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-                margin-bottom: 30px;
+                margin-bottom: clamp(25px, 3vw, 40px);
                 margin-top: 0;
             }
             
-            .phone-huawei,
-            .phone-samsung,
-            .phone-main {
-                width: clamp(60px, 10vw, 150px);
-                height: clamp(100px, 16.67vw, 250px);
-            }
-            
             .device-showcase {
-                height: clamp(180px, 28vh, 250px);
                 position: relative;
                 margin: 0 auto;
-                padding: 30px 0 0;
+                margin-bottom: 0;
+                padding: 0;
                 transform: translateX(0);
+                height: clamp(200px, 30vh, 280px);
+                min-height: clamp(200px, 30vh, 280px);
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(100px, 16vh, 130px);
+                margin-top: clamp(-100px, -16vh, -130px);
             }
         }
         
@@ -1210,11 +1163,18 @@
             }
             
             .hero .subtitle {
-                margin-bottom: 40px;
+                margin-bottom: clamp(40px, 5vw, 70px);
             }
             
             .device-showcase {
-                transform: translateX(-50%) translateY(-130px);
+                transform: translateX(0);
+                margin: 0 auto;
+                margin-bottom: 0;
+            }
+            
+            .section:first-of-type {
+                padding-top: clamp(180px, 24vw, 250px);
+                margin-top: clamp(-180px, -24vw, -250px);
             }
         }
     </style>
@@ -1291,7 +1251,7 @@
     
     <section class="section section-white">
         <h2>Experience Rockbox</h2>
-        <p>Full-featured music player with 600+ themes, seamless theme matching, and the classic iPod scrollwheel interface you know and love.</p>
+        <p>Full Rockbox firmware for Android 4.2-4.4. 600+ themes, virtual iPod scrollwheel, and complete Rockbox features.</p>
         
         <div class="device-specs">
             <div class="spec">
@@ -1314,33 +1274,33 @@
         <div class="features-grid">
             <div class="feature">
                 <div class="feature-icon">🎨</div>
-                <h3>Theme Support</h3>
-                <p>Full support for 600+ Rockbox themes designed for iPod Classic/Video (240p) and Innioasis Y1 (360p). Infinite customisation through theme blending behaviours, case and scrollwheel colour combinations, custom Rockbox colour codes (matched in blend modes), and custom images as the on-screen player skin—just like putting a skin on an MP3 player back in the day.</p>
+                <h3>600+ Themes</h3>
+                <p>Full support for iPod Classic/Video (240p) and Innioasis Y1 (360p) themes. Custom colors, blend modes, and custom body images.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎯</div>
-                <h3>Match Rockbox Theme</h3>
-                <p>Automatically matches your Rockbox theme's background and foreground colors. Includes blend mode for seamless integration.</p>
+                <h3>Theme Matching</h3>
+                <p>Auto-reads colors from your active Rockbox theme. Scrollwheel and UI blend with theme colors in real-time.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎮</div>
-                <h3>Simulated Scrollwheel</h3>
-                <p>Classic iPod-style click wheel interface with virtual controls. Navigate menus, control playback, and access all Rockbox features.</p>
+                <h3>Virtual Scrollwheel</h3>
+                <p>Touch-based iPod click wheel interface. Navigate menus, control playback, adjust volume with familiar gestures.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎵</div>
-                <h3>Full Rockbox Features</h3>
-                <p>Complete Rockbox functionality including playlists, database, FM radio, plugins, and extensive codec support.</p>
+                <h3>Full Rockbox</h3>
+                <p>Complete Rockbox feature set: playlists, database, FM radio, plugins, codecs, and all audio processing options.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎨</div>
-                <h3>Customizable Colors</h3>
-                <p>Choose from multiple body colors and scrollwheel options. Match Rockbox colors or use custom presets.</p>
+                <h3>Color Selection</h3>
+                <p>Choose scrollwheel color from Foreground, Line Selector Primary, or Secondary—whichever is most vibrant. Includes contrast protection.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">📱</div>
-                <h3>Widget Support</h3>
-                <p>Home screen widgets for quick access to playback controls and track information.</p>
+                <h3>Resolution Support</h3>
+                <p>Separate builds for 240p (iPod Classic/Video themes) and 360p (Innioasis Y1 themes). Native resolution rendering.</p>
             </div>
         </div>
     </section>
@@ -1360,58 +1320,44 @@
         </div>
     </section>
     
-    <section class="section section-black">
-        <h2>System Requirements</h2>
-        <div class="requirements">
-            <h3>Supported Devices</h3>
-            <p style="text-align: left; margin-bottom: 30px;">YWDP is designed for Android 4.2-4.4 devices with the following requirements:</p>
-            <ul>
-                <li><strong>Screen Resolution:</strong> 480x800 (WVGA) minimum</li>
-                <li><strong>Android Version:</strong> 4.2 (API 17) to 4.4 (API 19)</li>
-                <li><strong>Storage:</strong> External SD card recommended for theme and music storage</li>
-            </ul>
-            <p style="text-align: left; margin-top: 30px; color: #ffffff;"><strong>Note:</strong> While the app requires a 480x800 screen resolution, it provides a 4:3 iPod Classic aspect ratio display area with virtual scrollwheel controls, making it compatible with various Android 4.2-4.4 devices including Huawei Ascend Y300, Galaxy S3 Mini, and similar devices.</p>
+    <section class="section section-white">
+        <h2>Requirements</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Android 4.2-4.4</h3>
+                <p>API 17-19. Tested on Huawei Ascend Y300, Galaxy S3 Mini, and similar devices.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📺</div>
+                <h3>480x800 Screen</h3>
+                <p>Minimum WVGA resolution. App renders at 4:3 iPod Classic aspect ratio with virtual scrollwheel.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💾</div>
+                <h3>SD Card</h3>
+                <p>External storage recommended. Auto-detects /storage/sdcard1 for themes and music.</p>
+            </div>
         </div>
     </section>
     
     <section class="section section-black">
-        <h2>Revive Your Old Android Phone</h2>
-        <div class="contribute-content">
-            <p style="font-size: 1.1rem; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Have an old Android 4.2-4.4 phone sitting in a drawer? Don't let it go to waste! Install YWDP and transform it into a dedicated portable audio player with the full power of Rockbox.
-            </p>
-            
-            <div style="background: rgba(102, 126, 234, 0.1); padding: 40px; border-radius: 12px; max-width: 900px; margin: 0 auto 40px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 30px;">Why Repurpose Your Old Phone?</h3>
-                <ul style="text-align: left; line-height: 1.8; font-size: 1.05rem;">
-                    <li style="margin-bottom: 20px;"><strong>Reduce Electronic Waste:</strong> Give your old device a new purpose instead of discarding it. Every phone saved from the landfill makes a difference.</li>
-                    <li style="margin-bottom: 20px;"><strong>Dedicated Music Player:</strong> Create a distraction-free audio experience without phone calls, notifications, or social media interruptions.</li>
-                    <li style="margin-bottom: 20px;"><strong>Extended Battery Life:</strong> Without cellular radios and background apps constantly running, battery life improves significantly—perfect for long listening sessions.</li>
-                    <li style="margin-bottom: 20px;"><strong>Cost-Effective:</strong> No need to purchase a new dedicated MP3 player when you already have a capable device.</li>
-                    <li style="margin-bottom: 20px;"><strong>Full Rockbox Experience:</strong> Access to 600+ themes, advanced audio settings, extensive codec support, and the complete Rockbox feature set.</li>
-                </ul>
+        <h2>Repurpose Old Phones</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">♻️</div>
+                <h3>Reduce E-Waste</h3>
+                <p>Give old Android 4.2-4.4 phones new life as dedicated music players instead of discarding them.</p>
             </div>
-            
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 30px;">What Makes YWDP Special?</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;">
-                    <div style="background: rgba(102, 126, 234, 0.1); padding: 30px; border-radius: 12px;">
-                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">Infinite Customisation</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.7;">Toggle between different theme blending behaviours, case and scrollwheel colour combinations, and set custom colour codes in Rockbox itself. Plus, set a custom image as the on-screen player's skin—just like putting a skin on an MP3 player back in the day.</p>
-                    </div>
-                    <div style="background: rgba(102, 126, 234, 0.1); padding: 30px; border-radius: 12px;">
-                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">Seamless Theme Integration</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.7;">Match your app's UI to your Rockbox theme colors automatically. The scrollwheel and background can blend seamlessly with your chosen Rockbox theme for a unified experience.</p>
-                    </div>
-                    <div style="background: rgba(102, 126, 234, 0.1); padding: 30px; border-radius: 12px;">
-                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">Virtual Scrollwheel</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.7;">Experience the classic iPod-style scrollwheel interface on your Android device. Navigate menus, adjust volume, and control playback with intuitive touch gestures.</p>
-                    </div>
-                    <div style="background: rgba(102, 126, 234, 0.1); padding: 30px; border-radius: 12px;">
-                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">600+ Themes</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.7;">Choose from hundreds of community-created themes, each with unique visual styles and layouts. Find the perfect look for your music player.</p>
-                    </div>
-                </div>
+            <div class="feature">
+                <div class="feature-icon">🔇</div>
+                <h3>Distraction-Free</h3>
+                <p>No calls, notifications, or apps. Just music playback with full Rockbox functionality.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔋</div>
+                <h3>Better Battery</h3>
+                <p>Without cellular radios and background services, battery life improves significantly for long listening sessions.</p>
             </div>
         </div>
     </section>
