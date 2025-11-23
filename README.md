@@ -1,2 +1,2 @@
-# YWDi-Landing
-Landing page for You Wouldn't Download an iPod
+# YWDP-Landing
+Landing page for You Wouldn't Download a Pod
